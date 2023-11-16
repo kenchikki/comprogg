@@ -1,0 +1,54 @@
+def letter_grade(n):
+    if 90 <= n <= 100:
+        return 'A'
+    elif 80 <= n < 90:
+        return 'B'
+    elif 70 <= n < 80:
+        return 'C'
+    elif 60 <= n < 70:
+        return 'D'
+    elif 0 <= n < 60:
+        return 'F'
+    return 0
+
+def main():
+    total = 0
+    passed_count = 0
+    failed_count = 0
+    highest_grade = 0
+    lowest_grade = 100
+
+    counter = 0
+    while counter < 10:
+        try:
+            grade = float(input("Enter grade: "))
+        except ValueError:
+            print("Invalid input. Please enter a numeric grade.")
+            continue  # Go back to the start of the loop if the input is not valid.
+
+        total += grade
+
+        if grade >= 60:
+            passed_count += 1
+        else:
+            failed_count += 1
+
+        highest_grade = max(highest_grade, grade)
+        lowest_grade = min(lowest_grade, grade)
+
+        print(f"Numerical Grade: {grade:.2f}\t Letter Grade: {letter_grade(grade)}")
+        print("---------------------------------------------------------")
+
+        counter += 1
+
+    average = total / 10
+    print("---------------------------------------------------------")
+    print(f"Class average: {average:.2f}")
+    print(f"Number of passed: {passed_count}")
+    print(f"Number of failed: {failed_count}")
+    print(f"Highest grade: {highest_grade:.2f}")
+    print(f"Lowest grade: {lowest_grade:.2f}")
+    print(f"Letter Grade: {letter_grade(average)}")
+
+if __name__ == "__main__":
+    main()
